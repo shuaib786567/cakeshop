@@ -1,0 +1,44 @@
+from flask import Flask, render_template
+
+app = Flask(__name__)
+
+# Routes
+@app.route('/')
+def home():
+    return render_template('index.html')
+
+@app.route('/shop')
+def shop():
+    # List of cake flavors with their respective images and descriptions
+    flavors = [
+        {
+            'name': 'Chocolate Cake',
+            'image': 'static/chocolate_cake.jpg',
+            'description': 'Decadent chocolate cake layered with rich chocolate ganache.'
+        },
+        {
+            'name': 'Strawberry Cake',
+            'image': 'static/strawberry_cake.jpg',
+            'description': 'Delicious strawberry-flavored cake topped with fresh strawberries.'
+        },
+        {
+            'name': 'Vanilla Cake',
+            'image': 'static/vanilla_cake.jpg',
+            'description': 'Classic vanilla cake with smooth buttercream frosting.'
+        },
+        {
+            'name': 'Red Velvet Cake',
+            'image': 'static/red_velvet_cake.jpg',
+            'description': 'Velvety red cake with cream cheese frosting, a perfect choice for any occasion.'
+        },
+        {
+            'name': 'Carrot Cake',
+            'image': 'static/carrot_cake.jpg',
+            'description': 'Moist carrot cake with cream cheese frosting and a hint of cinnamon.'
+        }
+    ]
+
+    return render_template('shop.html', flavors=flavors)
+
+if __name__ == '__main__':
+    app.run(debug=True)
